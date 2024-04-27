@@ -1,5 +1,5 @@
-import React, { createContext, ReactNode, useState } from "react";
-
+import React, { createContext, ReactNode, useState, useEffect } from "react";
+import { getAllLocalStorage } from "../services/storage";
 interface IAppContext {
   user: string;
   isLoggedIn: boolean;
@@ -17,6 +17,14 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
   children,
 }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const storage = getAllLocalStorage();
+
+  useEffect(() => {
+    if (storage) {
+      const { login } = JSON.parse(storage);
+      setIsLoggedIn(login);
+    }
+  }, []);
 
   const user = "Nascimento";
 

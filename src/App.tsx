@@ -2,19 +2,15 @@ import { BrowserRouter } from "react-router-dom";
 
 import { AppContextProvider } from "./components/AppContext";
 import MainRoutes from "./routes";
-import { changeLocalStorage, creatLocalStorage } from "./services/storage";
+import { creatLocalStorage, getAllLocalStorage } from "./services/storage";
 
 
 
 
 function App() {
 
-  creatLocalStorage()
+    !getAllLocalStorage() && creatLocalStorage()
 
-  changeLocalStorage({
-    login: true
-  })
-  
   return (
     <BrowserRouter>
       <AppContextProvider>
