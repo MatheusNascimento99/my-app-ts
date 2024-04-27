@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChakraProvider, Box } from "@chakra-ui/react";
+import { ChakraProvider, Box, Text, Center } from "@chakra-ui/react";
 
 
 export const Card = ({children}:any) => {
@@ -11,6 +11,12 @@ export const Card = ({children}:any) => {
           { children }
         </Box>
       </Box>
+      <Center>
+      <Text color={"blue"} fontSize={30}>
+        Email aceito: teste@teste.com
+      </Text>
+      </Center>
+      
     </ChakraProvider>
   );
 };
